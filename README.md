@@ -72,7 +72,7 @@ npm i
 1. 在 [Supabase](https://app.supabase.com) 上创建一个新项目
    - 点击"新建项目"
    - 填写基本信息（项目名称、密码等）
-
+   ## 数据库密码： Z5Zyg136kTqLyvW4
 2. Settings > Data API
    - 复制API URL, 粘贴到.env文件中NEXT_PUBLIC_SUPABASE_URL
 
