@@ -5,8 +5,36 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Zap, Shield, Globe, CheckCircle2 } from "lucide-react";
 import { PricingSection } from "@/components/pricing-section";
+import { useTranslation } from "@/lib/i18n/context";
 
 export default function Home() {
+  const t = useTranslation();
+
+  const features = [
+    {
+      title: t("featureNextjs"),
+      description: t("featureNextjsDesc"),
+      icon: <Zap className="w-6 h-6" />,
+    },
+    {
+      title: t("featureSupabase"),
+      description: t("featureSupabaseDesc"),
+      icon: <Shield className="w-6 h-6" />,
+    },
+    {
+      title: t("featurePayments"),
+      description: t("featurePaymentsDesc"),
+      icon: <Globe className="w-6 h-6" />,
+    },
+  ];
+
+  const stats = [
+    { value: "10x", label: t("fasterDev") },
+    { value: "100+", label: t("uiComponents") },
+    { value: "TS", label: t("typescriptFirst") },
+    { value: "24/7", label: t("support24") },
+  ];
+
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
@@ -22,14 +50,13 @@ export default function Home() {
               className="space-y-4"
             >
               <div className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80">
-                v1.0 is now live
+                {t("heroBadge")}
               </div>
               <h1 className="text-4xl md:text-6xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/60">
-                Ship your SaaS in days, <br className="hidden sm:inline" />
-                not months.
+                {t("heroTitle")}
               </h1>
               <p className="text-xl text-muted-foreground max-w-[600px] mx-auto">
-                The ultimate Next.js starter kit with Supabase Auth, Creem Payments, and a production-ready dashboard. save 200+ hours of development time.
+                {t("heroSubtitle")}
               </p>
             </motion.div>
 
@@ -41,12 +68,12 @@ export default function Home() {
             >
               <Link href="/sign-up">
                 <Button size="lg" className="w-full sm:w-auto h-12 px-8 text-lg gap-2">
-                  Get Started <ArrowRight className="w-4 h-4" />
+                  {t("getStarted")} <ArrowRight className="w-4 h-4" />
                 </Button>
               </Link>
               <Link href="#features">
                 <Button variant="outline" size="lg" className="w-full sm:w-auto h-12 px-8 text-lg">
-                  View Demo
+                  {t("viewDemo")}
                 </Button>
               </Link>
             </motion.div>
@@ -57,8 +84,8 @@ export default function Home() {
                 transition={{ duration: 0.5, delay: 0.4 }}
                 className="pt-8 flex items-center justify-center gap-4 text-sm text-muted-foreground"
             >
-                <div className="flex items-center gap-1"><CheckCircle2 className="w-4 h-4 text-green-500"/> No credit card required</div>
-                <div className="flex items-center gap-1"><CheckCircle2 className="w-4 h-4 text-green-500"/> 7-day free trial</div>
+                <div className="flex items-center gap-1"><CheckCircle2 className="w-4 h-4 text-green-500"/> {t("noCreditCard")}</div>
+                <div className="flex items-center gap-1"><CheckCircle2 className="w-4 h-4 text-green-500"/> {t("freeTrial")}</div>
             </motion.div>
           </div>
         </div>
@@ -68,8 +95,8 @@ export default function Home() {
       <section id="features" className="py-20 bg-muted/50">
         <div className="container px-4 md:px-6">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">Everything you need</h2>
-            <p className="text-muted-foreground text-lg">Built with the best modern tech stack.</p>
+            <h2 className="text-3xl font-bold mb-4">{t("everythingYouNeed")}</h2>
+            <p className="text-muted-foreground text-lg">{t("builtWithBest")}</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -110,13 +137,13 @@ export default function Home() {
        {/* CTA Section */}
        <section className="py-20 bg-primary text-primary-foreground">
         <div className="container px-4 md:px-6 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to build your next big thing?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">{t("ctaTitle")}</h2>
             <p className="text-primary-foreground/80 mb-8 max-w-2xl mx-auto text-lg">
-                Join thousands of developers who are building faster with Simple Saas Starter Kit.
+                {t("ctaSubtitle")}
             </p>
             <Link href="/sign-up">
                 <Button size="lg" variant="secondary" className="h-12 px-8 text-lg">
-                    Start Building Now
+                    {t("startBuilding")}
                 </Button>
             </Link>
         </div>
@@ -124,28 +151,3 @@ export default function Home() {
       <PricingSection />    </div>
   );
 }
-
-const features = [
-  {
-    title: "Next.js 14 App Router",
-    description: "Built on the latest Next.js 14 with Server Components for ultimate performance and SEO.",
-    icon: <Zap className="w-6 h-6" />,
-  },
-  {
-    title: "Supabase Auth & DB",
-    description: "Production-ready authentication and PostgreSQL database setup out of the box.",
-    icon: <Shield className="w-6 h-6" />,
-  },
-  {
-    title: "Global Payments",
-    description: "Integrated Creem.io for handling subscriptions, one-time payments, and credits globally.",
-    icon: <Globe className="w-6 h-6" />,
-  },
-];
-
-const stats = [
-  { value: "10x", label: "Faster Development" },
-  { value: "100+", label: "UI Components" },
-  { value: "TS", label: "TypeScript First" },
-  { value: "24/7", label: "Support" },
-];

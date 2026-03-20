@@ -1,6 +1,6 @@
 import Header from "@/components/header";
 import { Footer } from "@/components/footer";
-import { ThemeProvider } from "next-themes";
+import { Providers } from "@/components/providers";
 import { createClient } from "@/utils/supabase/server";
 import { Toaster } from "@/components/ui/toaster";
 import "./globals.css";
@@ -40,19 +40,14 @@ export default async function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="bg-background text-foreground" suppressHydrationWarning>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+        <Providers>
           <div className="relative min-h-screen">
             <Header user={user} />
             <main className="flex-1">{children}</main>
             <Footer />
           </div>
           <Toaster />
-        </ThemeProvider>
+        </Providers>
       </body>
     </html>
   );
